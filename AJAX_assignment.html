@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+	<title>AJAX Practice</title>
+	<script src='AJAX_asgnmt.js'></script>
+</head>
+<body>
+  <h2>AJAX Assignment</h2>
+	<div>
+	  <label>Number of pages to return (30 results per page): </label>
+	  <select id = "num_pgs">
+		  <option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select>
+	</div>
+	<div>
+	  <p>Filter by Language:
+		<br />
+		<input type = "checkbox" name = "language" value = "JavaScript"/> JavaScript
+		<input type = "checkbox" name = "language" value = "JSON"/> JSON
+		<input type = "checkbox" name = "language" value = "SQL"/> SQL
+		<input type = "checkbox" name = "language" value = "Python"/> Python
+		</p>
+	</div>
+	<input type="button" value="Search" onclick="generate_rslt()">
+	<section>
+	  <p>
+		  <h3>Favorites:</h3>
+	    <ul id = "favorites">
+		  </ul>
+		</p>
+	</section>
+	<section>
+	  <p>
+		  <h3>Results:<h3>
+		  <ul id = "results">
+		  </ul>
+		</p>
+	</section>
+	
+</body>
+</html>

@@ -1,0 +1,23 @@
+You log goes in this  file.
+
+Assignment 3.1
+
+Start: Sun, 1 Feb 2015 11:52 -0800
+End: Wed, 1 Feb 2015 17:45 -0800
+Tasks: Completed the entire assignment 3 part 1
+
+
+Assignment 3.2
+
+Start: Sat, 7 Feb 2015 19:00 -0800
+End: Sat, 7 Feb 2015 23:00 -0800
+Tasks:  • HTML, 
+        • Figure out how to add a link to a div
+        • Figure out how to bind a function to a button
+        • Figure out how to make an ajax request to http://api.github.com/gists
+
+
+
+Start: Sun, 8 Feb 2015 12:36 -0800
+End: Sun, 8 Feb 2015
+Tasks: 
