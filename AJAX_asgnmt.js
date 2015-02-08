@@ -2,7 +2,29 @@
 function generate_rslt() {
  
 	getGists();
+
+};
+
+function getSelectedLanguages() {
+  var lang_select = [];
+		
+	if ( document.getElementById('JavaScript').checked ) {
+	  lang_select.push('JavaScript');		
+	};
+			
+	if (document.getElementById('JSON').checked) {
+	  lang_select.push('JSON');
+	};
 	
+	if (document.getElementById('SQL').checked) {
+	  lang_select.push('SQL');
+	};
+	
+	if (document.getElementById('Python').checked) {
+	  lang_select.push('Python');
+	};
+	
+	return lang_select;
 };
 
 function createResultsList(ul, description, url, language) {
@@ -41,6 +63,7 @@ function getGists() {
 			  result = JSON.parse(this.responseText);		  
         //source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
 				Array.prototype.push.apply(gists, result);
+				var select_lang = getSelectedLanguages();
 				
         gists.forEach( function (gist) { 
 				  				
@@ -56,8 +79,22 @@ function getGists() {
 					  file = files[filename];					
 					  language.push(file.language);
 				  }
-				
-          createResultsList(document.getElementById('results'), description, url, language);
+					
+					// If any of the languages inside 'language' is in 'select_lang' or empty call createResultsList
+					if (select_lang.length !== 0) {
+					  for (var j = 0; j < language.length; j++) {
+					    select_lang.forEach( function (lang) {
+						    if (language[j] === lang) {
+							    createResultsList(document.getElementById('results'), description, url, language);
+							  }
+						  });
+					  }
+				  }
+					else {
+					  // selected language array is empty
+						createResultsList(document.getElementById('results'), description, url, language);
+					}
+          
 				});
 			}
 	  }

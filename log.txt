@@ -19,5 +19,13 @@ Tasks:  • HTML,
 
 
 Start: Sun, 8 Feb 2015 12:36 -0800
-End: Sun, 8 Feb 2015
-Tasks: 
+End: Sun, 8 Feb 2015 15:29 -0800
+Tasks: • Figure out how to turn a JSON object into a actual object
+       • Make an array of Gists
+       • Figure out how to get the language of the file type
+
+
+
+Start: Sun, 8 Feb 2015 21:52 -0800
+End: Sun, 8 Feb 2015 23:30 -0800
+Description: Work on filtering results
