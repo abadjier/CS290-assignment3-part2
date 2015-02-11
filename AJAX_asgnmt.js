@@ -1,22 +1,22 @@
+// Global object to store the array of favorite gists
 var stored_gists = null;
-
 
 function generate_rslt() { 
   var res_list = document.getElementById("res");
-	
-  // 	Clear the old result list
-	while( res_list.childNodes.length != 0 ) {
-	  res_list.removeChild(res_list.childNodes[res_list.childNodes.length - 1]);
-	}
-	
-  // generate new result list	
-	getGists();
+
+  //Clear the old result list
+  while(res_list.childNodes.length != 0) {
+    res_list.removeChild(res_list.childNodes[res_list.childNodes.length - 1]);
+  }
+
+  //generate new result list	
+  getGists();
 }
 
 function getSelectedLanguages() {
   var lang_select = [];
 		
-	if ( document.getElementById('JavaScript').checked ) {
+	if (document.getElementById('JavaScript').checked) {
 	  lang_select.push('JavaScript');		
 	};
 			
@@ -72,12 +72,18 @@ function isInFavorites(item) {
 
 function addToFavoritesList(ul, itemText) {
   var fav_item = document.createElement('li');
+	var btn = document.createElement('button');
+	var btn_text = document.createTextNode('Remove');
+  btn.appendChild(btn_text);
 	fav_item.innerHTML = itemText;
+	fav_item.appendChild(btn);
 	ul.appendChild(fav_item);	
 }
 
-function populateFavoritesList( ul, fav_gists ) {  
-	fav_gists.gists.forEach( function (gist) { 
+function populateFavoritesList() {  
+  var ul = document.getElementById('favorites');
+	
+	stored_gists.gists.forEach( function (gist) { 
 	  var liItem = document.createElement('li');
 		var btn = document.createElement('button');
 	  var btn_text = document.createTextNode('Remove');
@@ -157,8 +163,9 @@ function getGists() {
 	}	
 }
 
+//Hook up event listeners to results buttons
 function setUpResultsList() {
-  //Hook up event listeners to results buttons
+  
   ul = document.getElementById('res');
 
   // Code for add to favourites button
@@ -170,7 +177,7 @@ function setUpResultsList() {
 		return e.target || e.srcElement;   // get the target of event
   }	
 	
-	function addToFavorites (e) {
+	function addToFavorites(e) {
     var target, liElement, ulElement, link;	
 
     if (e.target.nodeName !== 'BUTTON') {
@@ -186,7 +193,7 @@ function setUpResultsList() {
 		link = link.slice(0, link.indexOf("<button>"));   // remove button from li
 		//console.log(link);
 		
-		// Add link to favourites on screen and to local storage ------TO DO
+		
 		//Add to local storage
 		stored_gists.gists.push(link);
 		localStorage.setItem('storedGistsKey', JSON.stringify(stored_gists));
@@ -210,15 +217,68 @@ function setUpResultsList() {
 
 }
 
+// Hook up event listeners to favourites- delete buttons
 function setUpFavoritesList() {
+  ul = document.getElementById('favorites');
 
+  // Code for remove from favourites button
+  //	Source: Jon Duckett 'Javascript & Jquery' pg. 269  
+	function getTarget(e) {
+    if (!e) {         // If there is no event object 
+		  e = window.event;   // Use old IE event object
+		}
+		return e.target || e.srcElement;   // get the target of event
+  }	
+	
+	function removeFromFavorites (e) {
+    var target, liElement, ulElement, link;	
+
+    if (e.target.nodeName !== 'BUTTON') {
+      return;		
+		}
+		
+    target = getTarget(e);           // get clicked on button
+		
+		liElement = target.parentNode;		// get li element
+		ulElement = target.parentNode.parentNode; //get ul element		
+				
+		link = liElement.innerHTML;		
+		link = link.slice(0, link.indexOf("<button>"));   // remove button from li
+				
+		//Remove from global array
+		removeFromFavoritesList(link);
+		
+		//Remove from local storage 		
+		localStorage.setItem('storedGistsKey', JSON.stringify(stored_gists));
+		
+		//Remove from favourites in HTML					
+		ulElement.removeChild(liElement);				
+  }
+	
+	if (ul.addEventListener) { //If event listener works
+	  ul.addEventListener('click', function(e) {     // Add listener on click
+	    removeFromFavorites(e);
+		}, false);               // use bubbling phase for flow
+	}
+	else {
+	  ul.attachEvent('onclick', function(e) {     // Use old IE model
+		  removeFromFavorites(e);
+		});
+	}
 }
 
-window.onload = function () {
+function removeFromFavoritesList(item) {  
+	var i;	
+	for (i = 0; i < stored_gists.gists.length; i++ ) {
+	  if (stored_gists.gists[i] == item ) {
+		  //Remove 1 element at position i
+			//Source: http://www.w3schools.com/jsref/jsref_splice.asp
+			stored_gists.gists.splice(i, 1);
+		}
+	}	
+}
 
-  // Load favourites from local storage --------TO DO
-	
-	
+window.onload = function () {	
 	// Initialize storage
 	var gistStr = localStorage.getItem('storedGistsKey');
 	
@@ -231,8 +291,7 @@ window.onload = function () {
 	  stored_gists = JSON.parse(gistStr);
 	}
 	
-	populateFavoritesList( document.getElementById('favorites'), stored_gists );
-	//console.log('stored: ' + stored_gists);
+	populateFavoritesList();	
 	
 	setUpResultsList();
 	

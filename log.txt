@@ -16,25 +16,29 @@ Tasks:  • HTML,
         • Figure out how to bind a function to a button
         • Figure out how to make an ajax request to http://api.github.com/gists
 
-
-
 Start: Sun, 8 Feb 2015 12:36 -0800
 End: Sun, 8 Feb 2015 15:29 -0800
 Tasks: • Figure out how to turn a JSON object into a actual object
        • Make an array of Gists
        • Figure out how to get the language of the file type
 
+
+Start: Sun, 8 Feb 2015 21:52 -0800
+End: Sun, 8 Feb 2015 23:30 -0800
+Description: Work on filtering results
+
 Start: Mon, 9 Feb 2015 16:00 -0800
 End: Mon, 9 Feb 2015 21:00 -0800
 Tasks: Add a button to each ,<li> item  attach even listener to each button
 
 Start: Tue, 10 Feb 2015 12:00 -0800
-End: Tue, 10 Feb 2015  -0800
+End: Tue, 10 Feb 2015  15:30 -0800
 Tasks:• Attach even listener to each <li> button
-      • 
+      • Figure out how to add stuff to local storage
+
+Start: Wed, 11 Feb 2015 12:00 -0800				
+End: Tue, 10 Feb 2015  14:30 -0800
+Tasks:• Figure out how to remove stuff from local storage
+      • Create remove buttons on favorites list and add event listeners
 
 
-
-Start: Sun, 8 Feb 2015 21:52 -0800
-End: Sun, 8 Feb 2015 23:30 -0800
-Description: Work on filtering results
