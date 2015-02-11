@@ -24,6 +24,15 @@ Tasks: • Figure out how to turn a JSON object into a actual object
        • Make an array of Gists
        • Figure out how to get the language of the file type
 
+Start: Mon, 9 Feb 2015 16:00 -0800
+End: Mon, 9 Feb 2015 21:00 -0800
+Tasks: Add a button to each ,<li> item  attach even listener to each button
+
+Start: Tue, 10 Feb 2015 12:00 -0800
+End: Tue, 10 Feb 2015  -0800
+Tasks:• Attach even listener to each <li> button
+      • 
+
 
 
 Start: Sun, 8 Feb 2015 21:52 -0800

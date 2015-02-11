@@ -3,7 +3,15 @@
 <head>
   <meta charset='utf-8'>
 	<title>AJAX Practice</title>
+	
 	<script src='AJAX_asgnmt.js'></script>
+	
+	<style type="text/css">
+	  button {
+      margin-left: 20px;
+    }		
+	</style>
+	
 </head>
 <body>
   <h2>AJAX Assignment</h2>
@@ -28,19 +36,18 @@
 	</div>
 	<input type="button" value="Search" onclick="generate_rslt()">
 	<section>
-	  <p>
-		  <h3>Favorites:</h3>
+	  <h3>Favorites:</h3>
+		<div>
 	    <ul id = "favorites">
 		  </ul>
-		</p>
+		</div>		
 	</section>
 	<section>
-	  <p>
-		  <h3>Results:<h3>
-		  <ul id = "results">
-		  </ul>
-		</p>
-	</section>
-	
+	  <h3>Results:</h3>
+		<div>
+		  <ul id = "res">
+		  </ul>			  
+		</div>
+	</section>	
 </body>
 </html>
